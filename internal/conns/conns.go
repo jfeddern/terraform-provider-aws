@@ -1222,8 +1222,9 @@ func (c *Config) Client() (interface{}, error) {
 		SkipMetadataApiCheck:        c.SkipMetadataApiCheck,
 		SkipRequestingAccountId:     c.SkipRequestingAccountId,
 		StsEndpoint:                 c.Endpoints[STS],
-		Token:                       c.Token,
-		UserAgentProducts:           StdUserAgentProducts(c.TerraformVersion),
+		//STSRegion:                   c.STSRegion,
+		Token:             c.Token,
+		UserAgentProducts: StdUserAgentProducts(c.TerraformVersion),
 		//UseDualStackEndpoint:        c.UseDualStackEndpoint,
 		//UseFIPSEndpoint:             c.UseFIPSEndpoint,
 	}
@@ -1550,6 +1551,8 @@ func (c *Config) Client() (interface{}, error) {
 		Endpoint: aws.String(c.Endpoints[STS]),
 		Region:   aws.String(stsRegion),
 	}
+
+	fmt.Printf("setting sts region to: %s\n", stsRegion)
 
 	client.STSConn = sts.New(sess.Copy(stsConfig))
 
