@@ -1,0 +1,118 @@
+---
+layout: "aws"
+page_title: "Terraform AWS Provider Version 4 Upgrade Guide"
+sidebar_current: "docs-aws-guide-version-4-upgrade"
+description: |-
+Terraform AWS Provider Version 4 Upgrade Guide
+---
+
+# Terraform AWS Provider Version 4 Upgrade Guide
+
+Version 4.0.0 of the AWS provider for Terraform is a major release and includes some changes that you will need to consider when upgrading. This guide is intended to help with that process and focuses only on changes from version 3.X to version 4.0.0. See the [Version 3 Upgrade Guide](/docs/providers/aws/guides/version-3-upgrade.html) for information about upgrading from 1.X to version 3.0.0.
+
+Most of the changes outlined in this guide have been previously marked as deprecated in the Terraform plan/apply output throughout previous provider releases. These changes, such as deprecation notices, can always be found in the [Terraform AWS Provider CHANGELOG](https://github.com/hashicorp/terraform-provider-aws/blob/main/CHANGELOG.md).
+
+~> **NOTE:** Version 4.0.0 of the AWS Provider will be the last major version to support [EC2 Classic]() resources.
+
+~> **NOTE:** Version 4.0.0 and 4.X versions of the AWS Provider will be the last versions compatible with Terraform 0.12-0.14.
+
+Upgrade topics:
+
+<!-- TOC depthFrom:2 depthTo:2 -->
+
+- [Provider Version Configuration](#provider-version-configuration)
+- [Full Resource Lifecycle of Default Resources](#full-resource-lifecycle-of-default-resources)
+    - [Resource: aws_default_subnet](#resource-aws_default_subnet)
+    - [Resource: aws_default_vpc](#resource-aws_default_vpc)
+- [Plural Data Source Behavior](plural-data-source-behavior)
+- [Data Source: aws_cloudwatch_log_group](#data-source-aws_cloudwatch_log_group)
+- [Data Source: aws_subnet_ids](#data-source-aws_subnet_ids)
+- [Resource: aws_batch_compute_environment](#resource-aws_batch_compute_environment)
+- [Resource: aws_elasticache_cluster](#resource-aws_elasticache_cluster)
+- [Resource: aws_elasticache_replication_group](#resource-aws_elasticache_replication_group)
+- [Resource: aws_network_interface](#resource-aws_network_interface)
+- [Resource: aws_s3_bucket](#resource-aws_s3_bucket)
+- [Resource: aws_vpn_connection](#resource-aws_vpn_connection)
+
+<!-- /TOC -->
+
+## Provider Version Configuration
+
+!> **WARNING:** This topic is placeholder documentation until version 4.0.0 is released.
+
+-> Before upgrading to version 4.0.0, it is recommended to upgrade to the most recent 3.X version of the provider and ensure that your environment successfully runs [`terraform plan`](https://www.terraform.io/docs/commands/plan.html) without unexpected changes or deprecation notices.
+
+It is recommended to use [version constraints when configuring Terraform providers](https://www.terraform.io/docs/configuration/providers.html#provider-versions). If you are following that recommendation, update the version constraints in your Terraform configuration and run [`terraform init`](https://www.terraform.io/docs/commands/init.html) to download the new version.
+
+For example, given this previous configuration:
+
+```terraform
+provider "aws" {
+  # ... other configuration ...
+
+  version = "~> 3.74"
+}
+```
+
+Update to latest 4.X version:
+
+```terraform
+provider "aws" {
+  # ... other configuration ...
+
+  version = "~> 4.0"
+}
+```
+
+## Plural Data Source Behavior
+
+The following plural data sources are now consistent with [Provider Design](https://github.com/hashicorp/terraform-provider-aws/blob/main/docs/contributing/provider-design.md#data-sources)
+such that they no longer return an error if zero results are found.
+
+* [aws_cognito_user_pools](/docs/providers/aws/d/cognito_user_pools.html)
+* [aws_db_event_categories](/docs/providers/aws/d/event_categories.html)
+* [aws_ebs_volumes](/docs/providers/aws/d/ebs_volumes.html)
+* [aws_ec2_coip_pools](/docs/providers/aws/d/ec2_coip_pools.html)
+* [aws_ec2_local_gateway_route_tables](/docs/providers/aws/d/ec2_local_gateway_route_tables.html)
+* [aws_ec2_local_gateway_virtual_interface_groups](/docs/providers/aws/d/ec2_local_gateway_virtual_interface_groups.html)
+* [aws_ec2_local_gateways](/docs/providers/aws/d/ec2_local_gateways.html)
+* [aws_ec2_transit_gateway_route_tables](/docs/providers/aws/d/ec2_transit_gateway_route_tables.html)
+* [aws_efs_access_points](/docs/providers/aws/d/efs_access_points.html)
+* [aws_emr_release_labels](/docs/providers/aws/d/emr_release_labels.html)
+* [aws_inspector_rules_packages](/docs/providers/aws/d/inspector_rules_packages.html)
+* [aws_ip_ranges](/docs/providers/aws/d/ip_ranges.html)
+* [aws_network_acls](/docs/providers/aws/d/network_acls.html)
+* [aws_route_tables](/docs/providers/aws/d/route_tables.html)
+* [aws_security_groups](/docs/providers/aws/d/security_groups.html)
+* [aws_ssoadmin_instances](/docs/providers/aws/d/ssoadmin_instances.html)
+
+## Full Resource Lifecycle of Default Resources
+
+Default subnets and vpcs can now do full resource lifecycle operations such that resource
+creation and deletion are now supported.
+
+### Resource: aws_default_subnet
+
+### Resource: aws_default_vpc
+
+## Data Source: aws_cloudwatch_log_group
+
+## Data Source: aws_subnet_ids
+
+## Resource: aws_batch_compute_environment
+
+## Resource: aws_elasticache_cluster
+
+## Resource: aws_elasticache_replication_group
+
+## Resource: aws_network_interface
+
+## Resource: aws_s3_bucket
+
+!> **WARNING:** This topic is placeholder documentation.
+
+## Resource: aws_vpn_connection
+
+Default values
+
+
