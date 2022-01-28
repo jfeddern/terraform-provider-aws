@@ -2516,7 +2516,7 @@ func TestAccS3Bucket_Manage_objectLock(t *testing.T) {
 		CheckDestroy: testAccCheckBucketDestroy,
 		Steps: []resource.TestStep{
 			{
-				Config: testAccBucketObjectLockEnabledNoDefaultRetention(bucketName),
+				Config: testAccObjectLockEnabledNoDefaultRetention(bucketName),
 				Check: resource.ComposeTestCheckFunc(
 					testAccCheckBucketExists(resourceName),
 					resource.TestCheckResourceAttr(resourceName, "object_lock_configuration.#", "1"),
@@ -2531,7 +2531,7 @@ func TestAccS3Bucket_Manage_objectLock(t *testing.T) {
 				ImportStateVerifyIgnore: []string{"force_destroy", "acl"},
 			},
 			{
-				Config: testAccBucketObjectLockEnabledWithDefaultRetention(bucketName),
+				Config: testAccObjectLockEnabledWithDefaultRetention(bucketName),
 				Check: resource.ComposeTestCheckFunc(
 					testAccCheckBucketExists(resourceName),
 					resource.TestCheckResourceAttr(resourceName, "object_lock_configuration.#", "1"),
@@ -5037,7 +5037,7 @@ resource "aws_s3_bucket" "bucket" {
 `, randInt)
 }
 
-func testAccBucketObjectLockEnabledNoDefaultRetention(bucketName string) string {
+func testAccObjectLockEnabledNoDefaultRetention(bucketName string) string {
 	return fmt.Sprintf(`
 resource "aws_s3_bucket" "arbitrary" {
   bucket = %[1]q
@@ -5049,7 +5049,7 @@ resource "aws_s3_bucket" "arbitrary" {
 `, bucketName)
 }
 
-func testAccBucketObjectLockEnabledWithDefaultRetention(bucketName string) string {
+func testAccObjectLockEnabledWithDefaultRetention(bucketName string) string {
 	return fmt.Sprintf(`
 resource "aws_s3_bucket" "arbitrary" {
   bucket = %[1]q
