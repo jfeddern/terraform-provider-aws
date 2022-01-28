@@ -101,6 +101,45 @@ creation and deletion are now supported.
 
 ## Data Source: aws_subnet_ids
 
+The `aws_subnet_ids` data source has been deprecated and will be removed removed in a future version. Use the `aws_subnets` data source instead.
+
+For example, change a configuration such as
+
+```hcl
+data "aws_subnet_ids" "example" {
+  vpc_id = var.vpc_id
+}
+
+data "aws_subnet" "example" {
+  for_each = data.aws_subnet_ids.example.ids
+  id       = each.value
+}
+
+output "subnet_cidr_blocks" {
+  value = [for s in data.aws_subnet.example : s.cidr_block]
+}
+```
+
+to
+
+```hcl
+data "aws_subnets" "example" {
+  filter {
+    name   = "vpc-id"
+    values = [var.vpc_id]
+  }
+}
+
+data "aws_subnet" "example" {
+  for_each = data.aws_subnets.example.ids
+  id       = each.value
+}
+
+output "subnet_cidr_blocks" {
+  value = [for s in data.aws_subnet.example : s.cidr_block]
+}
+```
+
 ## Resource: aws_batch_compute_environment
 
 No `compute_resources` can be specified when `type` is `UNMANAGED`.
