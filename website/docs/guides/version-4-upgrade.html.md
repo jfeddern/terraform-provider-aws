@@ -103,6 +103,48 @@ creation and deletion are now supported.
 
 ## Resource: aws_batch_compute_environment
 
+No `compute_resources` can now be specified when `type` is `UNMANAGED`.
+
+Previously a configuration such as
+
+```hcl
+resource "aws_batch_compute_environment" "test" {
+  compute_environment_name = "test"
+
+  compute_resources {
+    instance_role = aws_iam_instance_profile.ecs_instance.arn
+    instance_type = [
+      "c4.large",
+    ]
+    max_vcpus = 16
+    min_vcpus = 0
+    security_group_ids = [
+      aws_security_group.test.id
+    ]
+    subnets = [
+      aws_subnet.test.id
+    ]
+    type = "EC2"
+  }
+
+  service_role = aws_iam_role.batch_service.arn
+  type         = "UNMANAGED"
+}
+```
+
+could be applied and any compute resources were ignored.
+Now this configuration is invalid and will result in an error during plan.
+To resolve this error simply remove or comment out the `compute_resources` configuration block.
+
+```hcl
+resource "aws_batch_compute_environment" "test" {
+  compute_environment_name = "test"
+
+  service_role = aws_iam_role.batch_service.arn
+  type         = "UNMANAGED"
+}
+```
+
 ## Resource: aws_elasticache_cluster
 
 ## Resource: aws_elasticache_replication_group
