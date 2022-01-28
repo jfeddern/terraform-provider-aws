@@ -103,7 +103,7 @@ creation and deletion are now supported.
 
 ## Resource: aws_batch_compute_environment
 
-No `compute_resources` can now be specified when `type` is `UNMANAGED`.
+No `compute_resources` can be specified when `type` is `UNMANAGED`.
 
 Previously a configuration such as
 
@@ -133,7 +133,9 @@ resource "aws_batch_compute_environment" "test" {
 ```
 
 could be applied and any compute resources were ignored.
+
 Now this configuration is invalid and will result in an error during plan.
+
 To resolve this error simply remove or comment out the `compute_resources` configuration block.
 
 ```hcl
