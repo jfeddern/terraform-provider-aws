@@ -12,7 +12,7 @@ Version 4.0.0 of the AWS provider for Terraform is a major release and includes 
 
 Most of the changes outlined in this guide have been previously marked as deprecated in the Terraform plan/apply output throughout previous provider releases. These changes, such as deprecation notices, can always be found in the [Terraform AWS Provider CHANGELOG](https://github.com/hashicorp/terraform-provider-aws/blob/main/CHANGELOG.md).
 
-~> **NOTE:** Version 4.0.0 of the AWS Provider will be the last major version to support [EC2 Classic]() resources.
+~> **NOTE:** Version 4.0.0 of the AWS Provider will be the last major version to support [EC2-Classic resources](#ec2-classic-resource-and-data-source-support) as AWS plans to fully retire EC2-Classic Networking. See the [AWS News Blog](https://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/) for additional details.
 
 ~> **NOTE:** Version 4.0.0 and 4.X versions of the AWS Provider will be the last versions compatible with Terraform 0.12-0.14.
 
@@ -35,6 +35,15 @@ Upgrade topics:
 - [Resource: aws_vpn_connection](#resource-aws_vpn_connection)
 
 <!-- /TOC -->
+
+Additional Topics:
+
+<!-- TOC depthFrom:2 depthTo:2 -->
+
+- [EC2-Classic resource and data source support](#ec2-classic-resource-and-data-source-support)
+
+<!-- /TOC -->
+
 
 ## Provider Version Configuration
 
@@ -200,4 +209,21 @@ resource "aws_batch_compute_environment" "test" {
 
 Default values
 
+## EC2-Classic Resource and Data Source Support
 
+While an upgrade to this major version will not directly impact EC2-Classic resources, 
+it is important to keep in the mind the following AWS Provider resources will eventually no longer
+be compatible with EC2-Classic as AWS completes their EC2-Classic networking retirement (expected around August 15, 2022).
+
+* Running or stopped EC2 instances
+* Running or stopped RDS database instances
+* Elastic IP addresses
+* Classic Load Balancers
+* Redshift clusters
+* Elastic Beanstalk environments
+* EMR clusters
+* AWS Data Pipelines pipelines
+* ElastiCache clusters
+* Reserved Instances
+* Spot Requests
+* Capacity Reservations
