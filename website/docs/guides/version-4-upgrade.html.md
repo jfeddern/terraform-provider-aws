@@ -211,19 +211,18 @@ Default values
 
 ## EC2-Classic Resource and Data Source Support
 
-While an upgrade to this major version will not directly impact EC2-Classic resources, 
+While an upgrade to this major version will not directly impact EC2-Classic resources configured with Terraform,
 it is important to keep in the mind the following AWS Provider resources will eventually no longer
 be compatible with EC2-Classic as AWS completes their EC2-Classic networking retirement (expected around August 15, 2022).
 
-* Running or stopped EC2 instances
-* Running or stopped RDS database instances
-* Elastic IP addresses
-* Classic Load Balancers
-* Redshift clusters
-* Elastic Beanstalk environments
-* EMR clusters
-* AWS Data Pipelines pipelines
-* ElastiCache clusters
-* Reserved Instances
-* Spot Requests
-* Capacity Reservations
+* Running or stopped [EC2 instances](/docs/providers/aws/r/instance.html)
+* Running or stopped [RDS database instances](/docs/providers/aws/r/db_instance.html)
+* [Elastic IP addresses](/docs/providers/aws/r/eip.html)
+* [Classic Load Balancers](/docs/providers/aws/r/lb.html)
+* [Redshift clusters](/docs/providers/aws/r/redshift_cluster.html)
+* [Elastic Beanstalk environments](/docs/providers/aws/r/elastic_beanstalk_environment.html)
+* [EMR clusters](/docs/providers/aws/r/emr_cluster.html)
+* [AWS Data Pipelines pipelines](/docs/providers/aws/r/datapipeline_pipeline.html)
+* [ElastiCache clusters](/docs/providers/aws/r/elasticache_cluster.html)
+* [Spot Requests](/docs/providers/aws/r/spot_instance_request.html)
+* [Capacity Reservations](/docs/providers/aws/r/ec2_capacity_reservation.html)
