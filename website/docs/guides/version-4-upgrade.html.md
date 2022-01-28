@@ -85,6 +85,8 @@ such that they no longer return an error if zero results are found.
 * [aws_route_tables](/docs/providers/aws/d/route_tables.html)
 * [aws_security_groups](/docs/providers/aws/d/security_groups.html)
 * [aws_ssoadmin_instances](/docs/providers/aws/d/ssoadmin_instances.html)
+* [aws_vpcs](/docs/providers/aws/d/vpcs.html)
+* [aws_vpc_peering_connections](/docs/providers/aws/d/vpc_peering_connections.html)
 
 ## Full Resource Lifecycle of Default Resources
 
