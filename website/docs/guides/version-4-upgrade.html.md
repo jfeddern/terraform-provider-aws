@@ -24,7 +24,7 @@ Upgrade topics:
 - [Full Resource Lifecycle of Default Resources](#full-resource-lifecycle-of-default-resources)
     - [Resource: aws_default_subnet](#resource-aws_default_subnet)
     - [Resource: aws_default_vpc](#resource-aws_default_vpc)
-- [Plural Data Source Behavior](plural-data-source-behavior)
+- [Plural Data Source Behavior](#plural-data-source-behavior)
 - [Data Source: aws_cloudwatch_log_group](#data-source-aws_cloudwatch_log_group)
 - [Data Source: aws_subnet_ids](#data-source-aws_subnet_ids)
 - [Resource: aws_batch_compute_environment](#resource-aws_batch_compute_environment)
@@ -79,7 +79,7 @@ The following plural data sources are now consistent with [Provider Design](http
 such that they no longer return an error if zero results are found.
 
 * [aws_cognito_user_pools](/docs/providers/aws/d/cognito_user_pools.html)
-* [aws_db_event_categories](/docs/providers/aws/d/event_categories.html)
+* [aws_db_event_categories](/docs/providers/aws/d/db_event_categories.html)
 * [aws_ebs_volumes](/docs/providers/aws/d/ebs_volumes.html)
 * [aws_ec2_coip_pools](/docs/providers/aws/d/ec2_coip_pools.html)
 * [aws_ec2_local_gateway_route_tables](/docs/providers/aws/d/ec2_local_gateway_route_tables.html)
@@ -87,7 +87,7 @@ such that they no longer return an error if zero results are found.
 * [aws_ec2_local_gateways](/docs/providers/aws/d/ec2_local_gateways.html)
 * [aws_ec2_transit_gateway_route_tables](/docs/providers/aws/d/ec2_transit_gateway_route_tables.html)
 * [aws_efs_access_points](/docs/providers/aws/d/efs_access_points.html)
-* [aws_emr_release_labels](/docs/providers/aws/d/emr_release_labels.html)
+* [aws_emr_release_labels](/docs/providers/aws/d/emr_release_labels.markdown)
 * [aws_inspector_rules_packages](/docs/providers/aws/d/inspector_rules_packages.html)
 * [aws_ip_ranges](/docs/providers/aws/d/ip_ranges.html)
 * [aws_network_acls](/docs/providers/aws/d/network_acls.html)
