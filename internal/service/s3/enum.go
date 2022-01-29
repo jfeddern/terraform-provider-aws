@@ -10,8 +10,6 @@ const DefaultKmsKeyAlias = "alias/aws/s3"
 const (
 	BucketCannedACLExecRead         = "aws-exec-read"
 	BucketCannedACLLogDeliveryWrite = "log-delivery-write"
-
-	ErrCodeReplicationConfigurationNotFound = "ReplicationConfigurationNotFoundError"
 )
 
 func BucketCannedACL_Values() []string {
