@@ -505,7 +505,6 @@ func resourceReplicationGroupCreate(d *schema.ResourceData, meta interface{}) er
 		params.NumCacheClusters = aws.Int64(int64(numCacheClusters.(int)))
 	}
 
-
 	if userGroupIds := d.Get("user_group_ids").(*schema.Set); userGroupIds.Len() > 0 {
 		params.UserGroupIds = flex.ExpandStringSet(userGroupIds)
 	}
