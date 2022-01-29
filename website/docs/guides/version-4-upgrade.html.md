@@ -1,9 +1,9 @@
 ---
+subcategory: ""
 layout: "aws"
 page_title: "Terraform AWS Provider Version 4 Upgrade Guide"
-sidebar_current: "docs-aws-guide-version-4-upgrade"
 description: |-
-Terraform AWS Provider Version 4 Upgrade Guide
+  Terraform AWS Provider Version 4 Upgrade Guide
 ---
 
 # Terraform AWS Provider Version 4 Upgrade Guide
