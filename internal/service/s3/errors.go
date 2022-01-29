@@ -7,5 +7,5 @@ const (
 	ErrCodeNoSuchConfiguration                  = "NoSuchConfiguration"
 	ErrCodeNoSuchCORSConfiguration              = "NoSuchCORSConfiguration"
 	ErrCodeNoSuchPublicAccessBlockConfiguration = "NoSuchPublicAccessBlockConfiguration"
-	ErrCodeOperationAborted                     = "OperationAborted"
+	ErrCodeServerSideEncryptionNotFound         = "ServerSideEncryptionConfigurationNotFoundError"
 )
